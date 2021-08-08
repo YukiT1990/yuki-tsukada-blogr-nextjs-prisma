@@ -150,11 +150,20 @@ const Header: React.FC = () => {
         <p>
           {session.user.name} ({session.user.email})
         </p>
-        <Link href="/create">
-          <button>
-            <a>New post</a>
-          </button>
-        </Link>
+        {!session.user.email && (
+          <Link href="/update-user">
+            <button>
+              <a>Register Email</a>
+            </button>
+          </Link>
+        )}
+        {session.user.email && (
+          <Link href="/create">
+            <button>
+              <a>New post</a>
+            </button>
+          </Link>
+        )}
         <button onClick={() => signOut()}>
           <a>Log out</a>
         </button>
