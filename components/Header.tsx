@@ -158,11 +158,18 @@ const Header: React.FC = () => {
           </Link>
         )}
         {session.user.email && (
-          <Link href="/create">
-            <button>
-              <a>New post</a>
-            </button>
-          </Link>
+          <>
+            <Link href="/update-user">
+              <button>
+                <a>Update Email</a>
+              </button>
+            </Link>
+            <Link href="/create">
+              <button>
+                <a>New post</a>
+              </button>
+            </Link>
+          </>
         )}
         <button onClick={() => signOut()}>
           <a>Log out</a>
