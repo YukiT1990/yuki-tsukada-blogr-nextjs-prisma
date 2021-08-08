@@ -2,12 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
   "/": "pages/index.js",
-  "/api/post": "pages/api/post.js",
-  "/create": "pages/create.js",
-  "/drafts": "pages/drafts.js",
-  "/p/[id]": "pages/p/[id].js",
-  "/api/publish/[id]": "pages/api/publish/[id].js"
+  "/p/[id]": "pages/p/[id].js"
 }
