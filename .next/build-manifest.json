@@ -28,6 +28,14 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
+<<<<<<< HEAD
+=======
+    ],
+    "/update-user": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/update-user.js"
+>>>>>>> 3317080f010457be1968246d1def8682d85262e2
     ]
   },
   "ampFirstPages": []
