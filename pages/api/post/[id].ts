@@ -1,11 +1,19 @@
 import prisma from "../../../lib/prisma";
 
 // DELETE /api/post/:id
+// PUT /api/post/:id
 export default async function handle(req, res) {
   const postId = req.query.id;
   if (req.method === "DELETE") {
     const post = await prisma.post.delete({
       where: { id: Number(postId) },
+    });
+    res.json(post);
+  } else if (req.method === "PUT") {
+    const { title, content } = req.body;
+    const post = await prisma.post.update({
+      where: { id: Number(postId) },
+      data: { title: title, content: content },
     });
     res.json(post);
   } else {

@@ -6,6 +6,7 @@ import Router from "next/router";
 import { PostProps } from "../../components/Post";
 import { useSession } from "next-auth/client";
 import prisma from "../../lib/prisma";
+import Link from "next/link";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const postR = await prisma.post.findUnique({
@@ -38,6 +39,14 @@ async function deletePost(id: number): Promise<void> {
   Router.push("/");
 }
 
+async function editPost(id: number): Promise<void> {
+  // await fetch(`/api/post/${id}`, {
+  //   method: "PUT",
+  // });
+  // Router.push("/");
+  Router.push(`/edit/${id}`);
+}
+
 const Post: React.FC<PostProps> = (props) => {
   const [session, loading] = useSession();
   if (loading) {
@@ -60,7 +69,13 @@ const Post: React.FC<PostProps> = (props) => {
           <button onClick={() => publishPost(props.id)}>Publish</button>
         )}
         {userHasValidSession && postBelongsToUser && (
-          <button onClick={() => deletePost(props.id)}>Delete</button>
+          <>
+            <button onClick={() => editPost(props.id)}>Edit</button>
+            {/* <Link href={`/api/post/edit/${props.id}`}>
+              <button>Edit</button>
+            </Link> */}
+            <button onClick={() => deletePost(props.id)}>Delete</button>
+          </>
         )}
       </div>
       <style jsx>{`
