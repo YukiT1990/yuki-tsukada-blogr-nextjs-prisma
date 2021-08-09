@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { GetServerSideProps } from "next";
 import Layout from "../../components/Layout";
-import Router from "next/router";
 import prisma from "../../lib/prisma";
 import Post, { PostProps } from "../../components/Post";
 import { UserProps } from "../update-user";
-import { stringify } from "querystring";
 import Link from "next/link";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  // console.log("keyword: " + params?.keyword);
   const searchKeyword: string = params?.keyword.toString();
 
   const usersR = await prisma.user.findMany({

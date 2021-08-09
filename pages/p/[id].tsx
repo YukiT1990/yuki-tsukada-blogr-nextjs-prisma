@@ -6,7 +6,6 @@ import Router from "next/router";
 import { PostProps } from "../../components/Post";
 import { useSession } from "next-auth/client";
 import prisma from "../../lib/prisma";
-import Link from "next/link";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const postR = await prisma.post.findUnique({
@@ -100,7 +99,6 @@ const Post: React.FC<PostProps> = (props) => {
 
         button {
           background: #00e600;
-          /* border: 0; */
           border: 1px solid black;
           border-radius: 0.125rem;
           padding: 1rem 2rem;

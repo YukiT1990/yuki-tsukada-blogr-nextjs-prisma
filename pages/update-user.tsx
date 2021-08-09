@@ -4,7 +4,6 @@ import Router from "next/router";
 import { useSession, getSession } from "next-auth/client";
 import { GetServerSideProps } from "next";
 import prisma from "../lib/prisma";
-import { Prisma } from "@prisma/client";
 
 export type UserProps = {
   id: number;
@@ -19,8 +18,6 @@ export type UserProps = {
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req });
-
-  // console.log("session: " + JSON.stringify(session, null, 2));
 
   if (!session) {
     res.statusCode = 403;
@@ -37,7 +34,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const targetSession = await prisma.session.findUnique({
     where: { accessToken: token },
   });
-  // console.log(targetSession.userId);
   const userId = targetSession.userId;
 
   const targetUser = await prisma.user.findUnique({
@@ -55,10 +51,6 @@ type Props = {
 const UpdateUser: React.FC<Props> = ({ user_id, userEmail }) => {
   const [userId, setUserId] = useState(user_id);
   const [email, setEmail] = useState(userEmail);
-
-  console.log("userEmail: " + userEmail);
-
-  // console.log("props.userId: " + props.userId);
 
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault();

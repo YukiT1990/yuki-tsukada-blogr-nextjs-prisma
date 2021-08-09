@@ -154,6 +154,11 @@ const Header: React.FC = () => {
         </a>
 
         <style jsx>{`
+          .left {
+            display: flex;
+            flex-direction: row;
+          }
+
           .bold {
             font-weight: bold;
           }
@@ -162,14 +167,34 @@ const Header: React.FC = () => {
             text-decoration: none;
             color: #000;
             display: inline-block;
+            margin-right: 1rem;
           }
 
           .left a[data-active="true"] {
             color: gray;
           }
 
-          a + a {
-            margin-left: 1rem;
+          @media screen and (max-width: 600px) {
+            .left {
+              flex-direction: column;
+              margin-top: 2rem;
+            }
+
+            a {
+              margin-bottom: 1rem;
+            }
+          }
+
+          @media screen and (max-width: 500px) {
+            .left {
+              flex-basis: 50%;
+            }
+          }
+
+          @media screen and (max-width: 400px) {
+            .left {
+              flex-basis: 40%;
+            }
           }
         `}</style>
       </div>
@@ -179,30 +204,32 @@ const Header: React.FC = () => {
         <p>
           {session.user.name} ({session.user.email})
         </p>
-        {!session.user.email && (
-          <Link href="/update-user">
-            <button>
-              <a>Register Email</a>
-            </button>
-          </Link>
-        )}
-        {session.user.email && (
-          <>
+        <div className="buttons">
+          {!session.user.email && (
             <Link href="/update-user">
               <button>
-                <a>Update Email</a>
+                <a>Register Email</a>
               </button>
             </Link>
-            <Link href="/create">
-              <button>
-                <a>New post</a>
-              </button>
-            </Link>
-          </>
-        )}
-        <button onClick={() => signOut()}>
-          <a>Log out</a>
-        </button>
+          )}
+          {session.user.email && (
+            <>
+              <Link href="/update-user">
+                <button>
+                  <a>Update Email</a>
+                </button>
+              </Link>
+              <Link href="/create">
+                <button>
+                  <a>New post</a>
+                </button>
+              </Link>
+            </>
+          )}
+          <button onClick={() => signOut()}>
+            <a>Log out</a>
+          </button>
+        </div>
         <style jsx>{`
           a {
             text-decoration: none;
@@ -216,27 +243,53 @@ const Header: React.FC = () => {
             padding-right: 1rem;
           }
 
-          a + a {
-            margin-left: 1rem;
-          }
-
           .right {
             margin-left: auto;
+            display: flex;
+            flex-direction: row;
           }
 
           .right a {
-            /* border: 1px solid black; */
             border: none;
             padding: 0.5rem 1rem;
-            /* border-radius: 3px; */
+          }
+
+          .buttons {
+            display: flex;
+            flex-direction: row;
           }
 
           button {
-            /* border: none; */
             border: 1px solid black;
             background: #00e600;
             border-radius: 3px;
             margin-left: 0.5rem;
+          }
+
+          @media screen and (max-width: 1000px) {
+            .right {
+              flex-direction: column;
+            }
+          }
+
+          @media screen and (max-width: 500px) {
+            .right {
+              flex-basis: 50%;
+            }
+
+            .buttons {
+              flex-direction: column;
+            }
+
+            button {
+              margin-bottom: 0.5rem;
+            }
+          }
+
+          @media screen and (max-width: 500px) {
+            .right {
+              flex-basis: 60%;
+            }
           }
         `}</style>
       </div>
@@ -287,7 +340,6 @@ const Header: React.FC = () => {
 
             input[type="submit"] {
               background: #00e600;
-              /* border: 0; */
               border: 1px solid black;
               border-radius: 3px;
               padding: 0.5rem 2rem;
