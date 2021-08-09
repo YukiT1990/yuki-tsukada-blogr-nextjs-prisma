@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/client";
+import { Search } from "@material-ui/icons";
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -9,6 +10,23 @@ const Header: React.FC = () => {
     router.pathname === pathname;
 
   const [session, loading] = useSession();
+  const [searching, setSearching] = useState(false);
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  useEffect(() => {
+    console.log("reset keyword");
+    setSearching(false);
+    setSearchKeyword("");
+  }, [router.pathname]);
+
+  const submitData = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    try {
+      await Router.push(`/search/${searchKeyword}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   let left = (
     <div className="left">
@@ -17,6 +35,11 @@ const Header: React.FC = () => {
           Feed
         </a>
       </Link>
+
+      <a className="search" onClick={() => setSearching(!searching)}>
+        <Search />
+      </a>
+
       <style jsx>{`
         .bold {
           font-weight: bold;
@@ -125,6 +148,11 @@ const Header: React.FC = () => {
         <Link href="/drafts">
           <a data-active={isActive("/drafts")}>My drafts</a>
         </Link>
+
+        <a className="search" onClick={() => setSearching(!searching)}>
+          <Search />
+        </a>
+
         <style jsx>{`
           .bold {
             font-weight: bold;
@@ -216,17 +244,58 @@ const Header: React.FC = () => {
   }
 
   return (
-    <nav>
-      {left}
-      {right}
-      <style jsx>{`
-        nav {
-          display: flex;
-          padding: 2rem;
-          align-items: center;
-        }
-      `}</style>
-    </nav>
+    <>
+      <nav>
+        {left}
+        {right}
+        <style jsx>{`
+          nav {
+            display: flex;
+            padding: 2rem;
+            align-items: center;
+          }
+        `}</style>
+      </nav>
+      {searching && (
+        <>
+          <form onSubmit={submitData} className="seachForm">
+            <input
+              autoFocus
+              onChange={(e) => setSearchKeyword(e.target.value)}
+              placeholder="Search for users and posts."
+              type="text"
+              value={searchKeyword}
+            />
+            <input
+              disabled={searchKeyword == ""}
+              type="submit"
+              value="Search"
+            />
+          </form>
+          <style jsx>{`
+            .seachForm {
+              display: flex;
+              flex-direction: row;
+            }
+
+            input[type="text"] {
+              width: 90%;
+              padding: 0.5rem;
+              border-radius: 0.25rem;
+              border: 0.125rem solid rgba(0, 0, 0, 0.2);
+            }
+
+            input[type="submit"] {
+              background: #00e600;
+              /* border: 0; */
+              border: 1px solid black;
+              border-radius: 3px;
+              padding: 0.5rem 2rem;
+            }
+          `}</style>
+        </>
+      )}
+    </>
   );
 };
 

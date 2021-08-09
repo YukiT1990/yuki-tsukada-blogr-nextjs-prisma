@@ -40,10 +40,6 @@ async function deletePost(id: number): Promise<void> {
 }
 
 async function editPost(id: number): Promise<void> {
-  // await fetch(`/api/post/${id}`, {
-  //   method: "PUT",
-  // });
-  // Router.push("/");
   Router.push(`/edit/${id}`);
 }
 
@@ -62,18 +58,27 @@ const Post: React.FC<PostProps> = (props) => {
   return (
     <Layout>
       <div>
-        <h2>{title}</h2>
-        <p>By {props?.author?.name || "Unknown author"}</p>
-        <ReactMarkdown source={props.content} />
+        <div className="postContents">
+          <h2>{title}</h2>
+          <p>By {props?.author?.name || "Unknown author"}</p>
+          <ReactMarkdown source={props.content} />
+          <small>
+            Created at: {props.createdAt.substring(0, 10)}{" "}
+            {props.createdAt.substring(11, 19)}{" "}
+          </small>
+          <br />
+          <small>
+            Updated at: {props.updatedAt.substring(0, 10)}{" "}
+            {props.updatedAt.substring(11, 19)}
+          </small>
+          <br />
+        </div>
         {!props.published && userHasValidSession && postBelongsToUser && (
           <button onClick={() => publishPost(props.id)}>Publish</button>
         )}
         {userHasValidSession && postBelongsToUser && (
           <>
             <button onClick={() => editPost(props.id)}>Edit</button>
-            {/* <Link href={`/api/post/edit/${props.id}`}>
-              <button>Edit</button>
-            </Link> */}
             <button onClick={() => deletePost(props.id)}>Delete</button>
           </>
         )}
@@ -86,6 +91,11 @@ const Post: React.FC<PostProps> = (props) => {
 
         .actions {
           margin-top: 2rem;
+        }
+
+        .postContents {
+          background: white;
+          margin-bottom: 2rem;
         }
 
         button {

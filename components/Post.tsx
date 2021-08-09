@@ -8,7 +8,7 @@ export type PostProps = {
   author: {
     name: string;
     email: string;
-  } | null;
+  };
   content: string;
   published: boolean;
   createdAt: string;
@@ -20,7 +20,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   return (
     <div onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}>
       <h2>{post.title}</h2>
-      <small>By {authorName}</small>
+      {post.author && <small>By {authorName}</small>}
       <ReactMarkdown source={post.content} />
       <small>
         {post.createdAt.substring(0, 10)} {post.createdAt.substring(11, 19)}

@@ -13,7 +13,7 @@ export default async function handle(req, res) {
     const { title, content } = req.body;
     const post = await prisma.post.update({
       where: { id: Number(postId) },
-      data: { title: title, content: content },
+      data: { title: title, content: content, updatedAt: new Date() },
     });
     res.json(post);
   } else {
