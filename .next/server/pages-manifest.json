@@ -2,9 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-<<<<<<< HEAD
-=======
-  "/update-user": "pages/update-user.js",
->>>>>>> 3317080f010457be1968246d1def8682d85262e2
-  "/": "pages/index.js"
+  "/p/[id]": "pages/p/[id].js",
+  "/drafts": "pages/drafts.js"
 }

@@ -11,6 +11,8 @@ export type PostProps = {
   } | null;
   content: string;
   published: boolean;
+  createdAt: string;
+  updatedAt: string;
 };
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
@@ -20,6 +22,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <h2>{post.title}</h2>
       <small>By {authorName}</small>
       <ReactMarkdown source={post.content} />
+      <small>{post.createdAt}</small>
       <style jsx>{`
         div {
           color: inherit;
