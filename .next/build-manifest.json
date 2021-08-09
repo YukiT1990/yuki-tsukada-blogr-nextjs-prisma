@@ -29,15 +29,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/drafts": [
+    "/edit/[id]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/drafts.js"
-    ],
-    "/p/[id]": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/p/[id].js"
+      "static/chunks/pages/edit/[id].js"
     ]
   },
   "ampFirstPages": []

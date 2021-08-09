@@ -79,7 +79,7 @@ const UpdateUser: React.FC<Props> = ({ user_id, userEmail }) => {
   return (
     <Layout>
       <div>
-        <h1>Update email of the user whose id is {userId}.</h1>
+        <h1>Update Email</h1>
         <form onSubmit={submitData}>
           <input
             autoFocus
@@ -89,8 +89,41 @@ const UpdateUser: React.FC<Props> = ({ user_id, userEmail }) => {
             value={email}
           />
           <input disabled={!email} type="submit" value="Register" />
+          <a className="back" href="#" onClick={() => Router.push("/")}>
+            or Cancel
+          </a>
         </form>
       </div>
+      <style jsx>{`
+        .page {
+          background: white;
+          padding: 3rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        input[type="text"],
+        textarea {
+          width: 100%;
+          padding: 0.5rem;
+          margin: 0.5rem 0;
+          border-radius: 0.25rem;
+          border: 0.125rem solid rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="submit"] {
+          background: #00e600;
+          /* border: 0; */
+          border: 1px solid black;
+          border-radius: 3px;
+          padding: 1rem 2rem;
+        }
+
+        .back {
+          margin-left: 1rem;
+        }
+      `}</style>
     </Layout>
   );
 };

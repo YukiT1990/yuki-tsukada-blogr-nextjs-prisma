@@ -93,6 +93,7 @@ const Header: React.FC = () => {
             text-decoration: none;
             color: #000;
             display: inline-block;
+            background: #00e600;
           }
 
           a + a {

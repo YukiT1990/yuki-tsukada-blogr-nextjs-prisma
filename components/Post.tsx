@@ -22,7 +22,9 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <h2>{post.title}</h2>
       <small>By {authorName}</small>
       <ReactMarkdown source={post.content} />
-      <small>{post.createdAt}</small>
+      <small>
+        {post.createdAt.substring(0, 10)} {post.createdAt.substring(11, 19)}
+      </small>
       <style jsx>{`
         div {
           color: inherit;
