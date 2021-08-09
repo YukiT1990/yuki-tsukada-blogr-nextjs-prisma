@@ -29,11 +29,6 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/drafts.js"
     ],
-    "/edit/[id]": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/edit/[id].js"
-    ],
     "/p/[id]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
