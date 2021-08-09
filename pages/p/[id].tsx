@@ -8,7 +8,7 @@ import { useSession } from "next-auth/client";
 import prisma from "../../lib/prisma";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const post = await prisma.post.findUnique({
+  const postR = await prisma.post.findUnique({
     where: {
       id: Number(params?.id) || -1,
     },
@@ -18,6 +18,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       },
     },
   });
+  const post = JSON.parse(JSON.stringify(postR));
   return {
     props: post,
   };
@@ -64,7 +65,7 @@ const Post: React.FC<PostProps> = (props) => {
       </div>
       <style jsx>{`
         .page {
-          background: white;
+          background: rgba(0, 255, 0, 0.05);
           padding: 2rem;
         }
 
@@ -73,8 +74,9 @@ const Post: React.FC<PostProps> = (props) => {
         }
 
         button {
-          background: #ececec;
-          border: 0;
+          background: #00e600;
+          /* border: 0; */
+          border: 1px solid black;
           border-radius: 0.125rem;
           padding: 1rem 2rem;
         }

@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     return { props: { drafts: [] } };
   }
 
-  const drafts = await prisma.post.findMany({
+  const draftsR = await prisma.post.findMany({
     where: {
       author: { email: session.user.email },
       published: false,
@@ -25,6 +25,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
         select: { name: true },
       },
     },
+  });
+  let draftsU = JSON.parse(JSON.stringify(draftsR));
+  let drafts = draftsU.sort((p1: PostProps, p2: PostProps) => {
+    return p2.createdAt > p1.createdAt ? 1 : -1;
   });
   return {
     props: { drafts },

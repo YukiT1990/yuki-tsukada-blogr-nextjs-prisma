@@ -196,13 +196,18 @@ const Header: React.FC = () => {
           }
 
           .right a {
-            border: 1px solid black;
+            /* border: 1px solid black; */
+            border: none;
             padding: 0.5rem 1rem;
-            border-radius: 3px;
+            /* border-radius: 3px; */
           }
 
           button {
-            border: none;
+            /* border: none; */
+            border: 1px solid black;
+            background: #00e600;
+            border-radius: 3px;
+            margin-left: 0.5rem;
           }
         `}</style>
       </div>

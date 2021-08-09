@@ -5,7 +5,7 @@ import Post, { PostProps } from "../components/Post";
 import prisma from "../lib/prisma";
 
 export const getServerSideProps: GetStaticProps = async () => {
-  const feed = await prisma.post.findMany({
+  const feedR = await prisma.post.findMany({
     where: { published: true },
     include: {
       author: {
@@ -13,6 +13,11 @@ export const getServerSideProps: GetStaticProps = async () => {
       },
     },
   });
+  let feedU = JSON.parse(JSON.stringify(feedR));
+  let feed = feedU.sort((p1: PostProps, p2: PostProps) => {
+    return p2.createdAt > p1.createdAt ? 1 : -1;
+  });
+  // console.log(feed);
   return { props: { feed } };
 };
 
