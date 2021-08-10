@@ -76,7 +76,7 @@ const UpdateUser: React.FC<Props> = ({ user_id, userEmail }) => {
           <input
             autoFocus
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Title"
+            placeholder="Email"
             type="text"
             value={email}
           />
