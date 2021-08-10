@@ -48,6 +48,11 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/p/[id].js"
+    ],
+    "/search/[keyword]": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/search/[keyword].js"
     ]
   },
   "ampFirstPages": []

@@ -2,10 +2,11 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
   "/": "pages/index.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
+  "/drafts": "pages/drafts.js",
   "/p/[id]": "pages/p/[id].js",
-  "/create": "pages/create.js",
-  "/drafts": "pages/drafts.js"
+  "/search/[keyword]": "pages/search/[keyword].js",
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/create": "pages/create.js"
 }

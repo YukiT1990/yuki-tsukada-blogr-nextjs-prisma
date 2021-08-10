@@ -44,6 +44,7 @@ const Layout: React.FC<Props> = (props) => (
       .layout {
         padding: 0 2rem;
         margin-bottom: 2rem;
+        min-height: 100vh;
       }
     `}</style>
     <Footer />
