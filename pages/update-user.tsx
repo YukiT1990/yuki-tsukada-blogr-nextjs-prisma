@@ -77,7 +77,7 @@ const UpdateUser: React.FC<Props> = ({ user_id, userEmail }) => {
             autoFocus
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
-            type="text"
+            type="email"
             value={email}
           />
           <input disabled={!email} type="submit" value="Register" />
@@ -95,7 +95,7 @@ const UpdateUser: React.FC<Props> = ({ user_id, userEmail }) => {
           align-items: center;
         }
 
-        input[type="text"],
+        input[type="email"],
         textarea {
           width: 100%;
           padding: 0.5rem;
