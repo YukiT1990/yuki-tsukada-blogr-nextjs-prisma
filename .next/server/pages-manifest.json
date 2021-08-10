@@ -2,7 +2,11 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/": "pages/index.js",
+  "/p/[id]": "pages/p/[id].js",
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
+  "/userfeed/[userId]": "pages/userfeed/[userId].js",
   "/create": "pages/create.js",
-  "/drafts": "pages/drafts.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js"
+  "/update-user": "pages/update-user.js",
+  "/search/[keyword]": "pages/search/[keyword].js"
 }
