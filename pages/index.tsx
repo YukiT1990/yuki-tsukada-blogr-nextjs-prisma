@@ -13,8 +13,8 @@ export const getServerSideProps: GetStaticProps = async () => {
       },
     },
   });
-  let feedU = JSON.parse(JSON.stringify(feedR));
-  let feed = feedU.sort((p1: PostProps, p2: PostProps) => {
+  const feedU = JSON.parse(JSON.stringify(feedR));
+  const feed = feedU.sort((p1: PostProps, p2: PostProps) => {
     return p2.createdAt > p1.createdAt ? 1 : -1;
   });
   return { props: { feed } };

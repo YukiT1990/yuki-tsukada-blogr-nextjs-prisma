@@ -27,8 +27,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       },
     },
   });
-  let feedsU = JSON.parse(JSON.stringify(feedsR));
-  let feeds = feedsU.sort((p1: PostProps, p2: PostProps) => {
+  const feedsU = JSON.parse(JSON.stringify(feedsR));
+  const feeds = feedsU.sort((p1: PostProps, p2: PostProps) => {
     return p2.createdAt > p1.createdAt ? 1 : -1;
   });
   return {

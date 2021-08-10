@@ -42,7 +42,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       },
     },
   });
-  const posts = JSON.parse(JSON.stringify(postsR));
+  const postsU = JSON.parse(JSON.stringify(postsR));
+  const posts = postsU.sort((p1: PostProps, p2: PostProps) => {
+    return p2.createdAt > p1.createdAt ? 1 : -1;
+  });
   return {
     props: { users, posts },
   };

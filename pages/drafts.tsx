@@ -24,8 +24,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       },
     },
   });
-  let draftsU = JSON.parse(JSON.stringify(draftsR));
-  let drafts = draftsU.sort((p1: PostProps, p2: PostProps) => {
+  const draftsU = JSON.parse(JSON.stringify(draftsR));
+  const drafts = draftsU.sort((p1: PostProps, p2: PostProps) => {
     return p2.createdAt > p1.createdAt ? 1 : -1;
   });
   return {
