@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   return (
     <>
       <div className="copyrightcontainer">
-        <p className="copyright">&copy; Yuki Tsukada</p>
+        <p className="copyright">&copy; 2021 Yuki Tsukada</p>
       </div>
 
       <div className="imagecontainer">
